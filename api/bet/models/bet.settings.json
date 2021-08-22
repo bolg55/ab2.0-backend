@@ -1,0 +1,74 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bets",
+  "info": {
+    "name": "Bet",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "sport": {
+      "type": "enumeration",
+      "enum": [
+        "Football",
+        "Basketball",
+        "Baseball",
+        "Soccer",
+        "Hockey",
+        "MMA",
+        "Golf",
+        "ESports"
+      ],
+      "required": true
+    },
+    "sport_info": {
+      "type": "string"
+    },
+    "wager_type": {
+      "type": "enumeration",
+      "enum": [
+        "Moneyline",
+        "Over",
+        "Under",
+        "Spread",
+        "Parlay",
+        "Prop"
+      ],
+      "required": true,
+      "default": "Moneyline"
+    },
+    "wager_info": {
+      "type": "string",
+      "required": true
+    },
+    "wager_amt": {
+      "type": "decimal",
+      "required": true
+    },
+    "odds": {
+      "type": "float"
+    },
+    "outcome": {
+      "type": "enumeration",
+      "enum": [
+        "win",
+        "lose",
+        "push"
+      ]
+    },
+    "date": {
+      "type": "datetime",
+      "required": true
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "bets"
+    }
+  }
+}
